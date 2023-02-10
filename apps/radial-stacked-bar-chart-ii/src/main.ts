@@ -124,9 +124,10 @@ const skills = [
   ['Adobe XD', 6, 4],
 ];
 
-const dataList = skills.map(([State, confidance]) => ({
+const dataList = (skills as [string, number][]).map(([State, confidance]) => ({
   State,
   confidance,
+  rest: 100 - confidance,
 })) as dataSchema[];
 
 function DOMsvg(e: number, t: number) {
@@ -146,10 +147,10 @@ function DOMsvg(e: number, t: number) {
 }
 
 async function define() {
-  // const fetchedData = (await d3.csv('/data.csv')) as unknown as dataSchema[];
   const data: dataSchema[] = dataList.sort(
     (a, b) => b.confidance - a.confidance
   );
+  const dataLength = data.length;
 
   const columns = Object.keys(data[0]);
 
@@ -177,7 +178,7 @@ async function define() {
   const z = d3
     .scaleOrdinal()
     .domain(columns.slice(1))
-    .range(['#d0743c', '#ff8c00'].reverse());
+    .range(['#ff8c00', '#efefef']);
   const xAxis = (g: any) =>
     g.attr('text-anchor', 'middle').call((g) =>
       g
@@ -200,65 +201,14 @@ async function define() {
         .call((g: any) =>
           g
             .append('text')
-            .attr('text-anchor', (_, i) => {
-              // return 'start';
-              // return i < (data.length - 1) / 2 ? 'start' : 'end';
-
-              if (i >= length / 2) {
-                return 'start';
-              }
-              return 'end';
-            })
-            .attr('transform', (d: any, i) => {
-              const length = data.length - 1;
-
-              // return 'rotate(0) translate(10,3)';
-
-              // if (i < length / 4) {
-              //   return 'rotate(0) translate(10,3)';
-              // }
-              if (i < length / 2) {
-                return `rotate(0) translate(${outerRadius * 0.6},3)`;
-              }
-              // if (i < (3 * length) / 4) {
-              return `rotate(-180) translate(-${outerRadius * 0.7},3)`;
-              // }
-              return `rotate(160) translate(10,3)`;
-
-              const left =
-                ((x(d.State) as number) + x.bandwidth() / 2 + Math.PI / 2) %
-                (2 * Math.PI);
-              const right = Math.PI;
-
-              // console.log(left, right);
-
-              console.log([
-                i,
-                x(d.State),
-                x.bandwidth(),
-                (x(d.State) as number) + x.bandwidth() / 2 + Math.PI / 2,
-                ((x(d.State) as number) + x.bandwidth() / 2 + Math.PI / 2) %
-                  (2 * Math.PI),
-                Math.PI,
-              ]);
-
-              // return 'rotate(-170) translate(10,3)';
-
-              return left < right
-                ? 'rotate(160) translate(10,3)'
-                : 'rotate(-160) translate(10,3)';
-            })
-            // .attr('transform', (d: any) => {
-            //   const up = Math.PI * 1.5;
-            //   const down = Math.PI * 0.5;
-
-            //   const angle = (x(d.State) as number) + x.bandwidth() / 2;
-
-            //   return angle < up && angle > down
-            //     ? 'rotate(180) translate(10,3)'
-            //     : 'rotate(-180) translate(10,3)';
-            // })
-
+            .attr('text-anchor', (_: unknown, i: number) =>
+              i > dataLength / 2 ? 'start' : 'end'
+            )
+            .attr('transform', (_: unknown, i: number) =>
+              i <= dataLength / 2
+                ? `rotate(0) translate(${outerRadius * 0.72},3)`
+                : `rotate(-180) translate(-${outerRadius * 0.72},3)`
+            )
             .text((d: any) => d.State)
         )
     );
@@ -279,7 +229,7 @@ async function define() {
         (g: any) =>
           g
             .selectAll('g')
-            .data(y.ticks(5).slice(1))
+            .data(y.ticks(4).slice(1))
             .join('g')
             .attr('fill', 'none')
             .call((g: any) =>
@@ -303,28 +253,28 @@ async function define() {
         //     .attr('stroke', 'none')
         // )
       );
-  const legend = (g: any) =>
-    g
-      .append('g')
-      .selectAll('g')
-      .data(columns.slice(1).reverse())
-      .join('g')
-      .attr(
-        'transform',
-        (d: any, i: number) =>
-          `translate(-40,${(i - (columns.length - 1) / 2) * 20})`
-      )
-      .call((g: any) =>
-        g.append('rect').attr('width', 18).attr('height', 18).attr('fill', z)
-      )
-      .call((g: any) =>
-        g
-          .append('text')
-          .attr('x', 24)
-          .attr('y', 9)
-          .attr('dy', '0.35em')
-          .text((d: any) => d)
-      );
+  // const legend = (g: any) =>
+  //   g
+  //     .append('g')
+  //     .selectAll('g')
+  //     .data(columns.slice(1).reverse())
+  //     .join('g')
+  //     .attr(
+  //       'transform',
+  //       (d: any, i: number) =>
+  //         `translate(-40,${(i - (columns.length - 1) / 2) * 20})`
+  //     )
+  //     .call((g: any) =>
+  //       g.append('rect').attr('width', 18).attr('height', 18).attr('fill', z)
+  //     )
+  //     .call((g: any) =>
+  //       g
+  //         .append('text')
+  //         .attr('x', 24)
+  //         .attr('y', 9)
+  //         .attr('dy', '0.35em')
+  //         .text((d: any) => d)
+  //     );
 
   // _chart(d3, document, width, height, data, z, arc, xAxis, yAxis, legend);
   const svg = d3
@@ -332,7 +282,7 @@ async function define() {
     .attr('viewBox', `${-width / 2} ${-height / 2} ${width} ${height}`)
     .style('width', windowWidth)
     .style('height', windowHeight)
-    .style('font', '10px sans-serif');
+    .style('font', '14px sans-serif');
 
   svg
     .append('g')
