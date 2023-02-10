@@ -2,8 +2,8 @@ import * as d3 from 'd3';
 
 const container = document.createElement('div');
 container.id = 'container';
-container.style.width = '700px';
-container.style.height = '700px';
+container.style.width = '100%';
+container.style.height = '100%';
 document.body.appendChild(container);
 
 const windowWidth = window.innerWidth;
@@ -11,256 +11,174 @@ const windowHeight = window.innerHeight;
 
 type dataSchema = {
   State: string;
-  total: number;
+  condidance: number;
   [key: string]: number | string;
 };
 
 const dataList = [
   {
     State: 'HTML5',
-    beginner: 310504,
-    average: 552339,
-    expert: 259034,
+    confidance: 95,
   },
   {
     State: 'CSS',
-    beginner: 52083,
-    average: 85640,
-    expert: 42153,
+    confidance: 80,
   },
   {
     State: 'JavaScript',
-    beginner: 515910,
-    average: 828669,
-    expert: 362642,
+    confidance: 95,
   },
   {
     State: 'TypeScript',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 80,
   },
   {
     State: 'Dart',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 70,
   },
   {
     State: 'Rust',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 25,
   },
   {
     State: 'Python',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 40,
   },
   {
     State: 'React.js',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 95,
   },
   {
     State: 'Redux.js',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 95,
   },
   {
     State: 'Node.js',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 95,
   },
   {
     State: 'Flutter',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 70,
   },
   {
     State: 'React Native',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 60,
   },
   {
     State: 'Tailwind CSS',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 100,
   },
   {
     State: 'Docker',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 60,
   },
   {
     State: 'Bootstrap',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 80,
   },
   {
     State: 'Jest',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 75,
   },
   {
     State: 'Cypress',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 70,
   },
   {
     State: 'GraphQL',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 95,
   },
   {
     State: 'Git',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 85,
   },
   {
     State: 'Github',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 95,
   },
   {
     State: 'CI/CD',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 86,
   },
   {
     State: 'Webpack',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 95,
   },
   {
     State: 'Vite',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 70,
   },
   {
     State: 'Babel',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 90,
   },
   {
     State: 'HTML5 Canvas',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 85,
   },
   {
     State: 'Angular.js',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 80,
   },
   {
     State: 'Angular',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 60,
   },
   {
     State: 'scss',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 20,
   },
   {
-    State: 'deno.js',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    State: 'Deno',
+    confidance: 10,
   },
   {
     State: 'SVG',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 60,
   },
   {
     State: 'Next.js',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 80,
   },
   {
     State: 'Tensorflow.js',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 30,
   },
   {
     State: 'd3.js',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 70,
   },
   {
     State: 'MySQL',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 40,
   },
   {
     State: 'PostgreSQL',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 50,
   },
   {
     State: 'SQLite',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 50,
   },
   {
     State: 'MongoDB',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 50,
   },
   {
     State: 'Firebase',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 80,
   },
   {
     State: 'Google Cloud',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 50,
   },
   {
     State: 'AWS',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 50,
   },
   {
     State: 'Redis',
-    beginner: 202070,
-    average: 343207,
-    expert: 157204,
+    confidance: 40,
   },
 ];
 
@@ -282,16 +200,7 @@ function DOMsvg(e: number, t: number) {
 
 async function define() {
   const fetchedData = (await d3.csv('/data.csv')) as unknown as dataSchema[];
-  const data: dataSchema[] = dataList.map((d) => {
-    const columns = Object.keys(d);
-
-    let total = 0;
-    for (let i = 1; i < columns.length; ++i) {
-      total += d[columns[i]] = +d[columns[i]];
-    }
-    d.total = total;
-    return d;
-  });
+  const data: dataSchema[] = dataList;
   // .sort((a, b) => b.total - a.total);
 
   const columns = Object.keys(data[0]);
@@ -301,7 +210,7 @@ async function define() {
   const width = windowWidth;
   const height = windowHeight;
   const innerRadius = 120;
-  const outerRadius = Math.min(width, height) * 0.8;
+  const outerRadius = Math.min(width, height) * 0.5;
   const x = d3
     .scaleBand()
     .domain(data.map((d) => d.State))
@@ -309,7 +218,7 @@ async function define() {
     .align(0);
   const y = d3
     .scaleRadial()
-    .domain([0, d3.max(data, (d) => d.total)] as number[])
+    .domain([0, d3.max(data, (d) => d.confidance)] as number[])
     .range([innerRadius, outerRadius]);
   const arc = d3
     .arc()
@@ -319,17 +228,10 @@ async function define() {
     .endAngle((d) => (x(d.data.State) as number) + x.bandwidth())
     .padAngle(0.01)
     .padRadius(innerRadius);
-  const z = d3.scaleOrdinal().domain(columns.slice(1)).range(
-    [
-      // '#98abc5',
-      // '#8a89a6',
-      '#7b6888',
-      '#6b486b',
-      '#a05d56',
-      '#d0743c',
-      '#ff8c00',
-    ].reverse()
-  );
+  const z = d3
+    .scaleOrdinal()
+    .domain(columns.slice(1))
+    .range(['#d0743c', '#ff8c00'].reverse());
   const xAxis = (g: any) =>
     g.attr('text-anchor', 'middle').call((g) =>
       g
@@ -359,7 +261,7 @@ async function define() {
             .attr('transform', (d: any, i) => {
               const length = data.length - 1;
 
-              return 'rotate(360) translate(10,3)';
+              return 'rotate(0) translate(10,3)';
 
               if (i < length / 4) {
                 return 'rotate(360) translate(10,3)';
@@ -415,10 +317,12 @@ async function define() {
       .call((g: any) =>
         g
           .append('text')
-          .attr('x', -6)
-          .attr('y', (d: any) => -y(y.ticks(10).pop() as number))
-          .attr('dy', '-1em')
-          .text('Population')
+          .attr('text-anchor', 'middle')
+          // .attr('x', 0)
+          // .attr('y', (d: any) => -y(y.ticks(10).pop() as number))
+          // .attr('dx', '1em')
+          // .attr('dy', '1em')
+          .text('Confidance')
       )
       .call(
         (g: any) =>
@@ -474,9 +378,9 @@ async function define() {
   // _chart(d3, document, width, height, data, z, arc, xAxis, yAxis, legend);
   const svg = d3
     .select(DOMsvg(width, height))
-    .attr('viewBox', `${-width / 2} ${-height * 0.69} ${width} ${height}`)
-    .style('width', '100%')
-    .style('height', 'auto')
+    .attr('viewBox', `${-width / 2} ${-height / 2} ${width} ${height}`)
+    .style('width', windowWidth)
+    .style('height', windowHeight)
     .style('font', '10px sans-serif');
 
   svg
