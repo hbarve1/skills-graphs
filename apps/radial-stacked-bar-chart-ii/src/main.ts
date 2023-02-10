@@ -11,176 +11,123 @@ const windowHeight = window.innerHeight;
 
 type dataSchema = {
   State: string;
-  condidance: number;
-  [key: string]: number | string;
+  confidance: number;
+  // [key: string]: number | string;
 };
 
-const dataList = [
-  {
-    State: 'HTML5',
-    confidance: 95,
-  },
-  {
-    State: 'CSS',
-    confidance: 80,
-  },
-  {
-    State: 'JavaScript',
-    confidance: 95,
-  },
-  {
-    State: 'TypeScript',
-    confidance: 80,
-  },
-  {
-    State: 'Dart',
-    confidance: 70,
-  },
-  {
-    State: 'Rust',
-    confidance: 25,
-  },
-  {
-    State: 'Python',
-    confidance: 40,
-  },
-  {
-    State: 'React.js',
-    confidance: 95,
-  },
-  {
-    State: 'Redux.js',
-    confidance: 95,
-  },
-  {
-    State: 'Node.js',
-    confidance: 95,
-  },
-  {
-    State: 'Flutter',
-    confidance: 70,
-  },
-  {
-    State: 'React Native',
-    confidance: 60,
-  },
-  {
-    State: 'Tailwind CSS',
-    confidance: 100,
-  },
-  {
-    State: 'Docker',
-    confidance: 60,
-  },
-  {
-    State: 'Bootstrap',
-    confidance: 80,
-  },
-  {
-    State: 'Jest',
-    confidance: 75,
-  },
-  {
-    State: 'Cypress',
-    confidance: 70,
-  },
-  {
-    State: 'GraphQL',
-    confidance: 95,
-  },
-  {
-    State: 'Git',
-    confidance: 85,
-  },
-  {
-    State: 'Github',
-    confidance: 95,
-  },
-  {
-    State: 'CI/CD',
-    confidance: 86,
-  },
-  {
-    State: 'Webpack',
-    confidance: 95,
-  },
-  {
-    State: 'Vite',
-    confidance: 70,
-  },
-  {
-    State: 'Babel',
-    confidance: 90,
-  },
-  {
-    State: 'HTML5 Canvas',
-    confidance: 85,
-  },
-  {
-    State: 'Angular.js',
-    confidance: 80,
-  },
-  {
-    State: 'Angular',
-    confidance: 60,
-  },
-  {
-    State: 'scss',
-    confidance: 20,
-  },
-  {
-    State: 'Deno',
-    confidance: 10,
-  },
-  {
-    State: 'SVG',
-    confidance: 60,
-  },
-  {
-    State: 'Next.js',
-    confidance: 80,
-  },
-  {
-    State: 'Tensorflow.js',
-    confidance: 30,
-  },
-  {
-    State: 'd3.js',
-    confidance: 70,
-  },
-  {
-    State: 'MySQL',
-    confidance: 40,
-  },
-  {
-    State: 'PostgreSQL',
-    confidance: 50,
-  },
-  {
-    State: 'SQLite',
-    confidance: 50,
-  },
-  {
-    State: 'MongoDB',
-    confidance: 50,
-  },
-  {
-    State: 'Firebase',
-    confidance: 80,
-  },
-  {
-    State: 'Google Cloud',
-    confidance: 50,
-  },
-  {
-    State: 'AWS',
-    confidance: 50,
-  },
-  {
-    State: 'Redis',
-    confidance: 40,
-  },
+const skillSegments = {
+  0: 'Beginner',
+  25: 'Intermediate',
+  50: 'Advanced',
+  75: 'Expert',
+  100: 'Master',
+};
+
+const categories = {
+  0: 'Frontend',
+  1: 'Backend',
+  2: 'Fullstack',
+  3: 'Mobile',
+  4: 'Design',
+  5: 'Soft Skills',
+  6: 'DevOps',
+  7: 'Cloud',
+  8: 'Database',
+  9: 'Testing',
+  10: 'Other',
+};
+
+const skills = [
+  ['HTML5', 95, 1],
+  ['CSS', 80, 1],
+  ['JavaScript', 95, 1],
+  ['TypeScript', 80, 1],
+  ['AssemblyScript', 80],
+  ['Dart', 70, 3],
+  ['Rust', 25, 2],
+  ['Python', 40, 1],
+  ['React.js', 95, 1],
+  ['Redux.js', 95, 1],
+  ['Node.js', 95, 2],
+  ['Flutter', 70, 3],
+  ['React Native', 60, 3],
+  ['Tailwind CSS', 100, 1],
+  ['Docker', 60, 6],
+  ['Bootstrap', 80, 1],
+  ['Jest', 75, 1],
+  ['Cypress', 70, 1],
+  ['GraphQL', 95, 1],
+  ['Git', 85, 6],
+  ['Github', 95, 6],
+  ['CI/CD', 86, 6],
+  ['Webpack', 95, 1],
+  ['Vite', 70, 1],
+  ['Babel', 90, 1],
+  ['HTML5 Canvas', 85, 1],
+  ['Angular.js', 80, 1],
+  ['Angular', 60, 1],
+  ['SCSS', 20, 1],
+  ['Deno', 10, 2],
+  ['SVG', 60, 1],
+  ['Next.js', 80, 1],
+  ['Tensorflow.js', 30, 1],
+  ['d3.js', 70, 1],
+  ['MySQL', 40, 8],
+  ['PostgreSQL', 50, 8],
+  ['SQLite', 50, 8],
+  ['MongoDB', 50, 8],
+  ['Firebase', 80, 7],
+  ['Google Cloud', 50, 7],
+  ['AWS', 50, 7],
+  ['Redis', 40, 8],
+  ['Kubernetes', 10, 6],
+  ['Linux', 50, 6],
+  ['Windows', 90, 6],
+  ['MacOS', 90, 6],
+  ['Ubuntu', 50, 6],
+  ['JAMstack', 80, 1],
+  ['PWA', 80, 1],
+  ['WebAssembly', 80, 1],
+  ['WebGL', 80, 1],
+  ['nx', 80, 2],
+  ['render.com', 80, 7],
+  ['Vercel', 80, 7],
+  ['Netlify', 80, 7],
+  ['Heroku', 80, 7],
+  ['DigitalOcean', 80, 7],
+  ['Gatsby', 80, 1],
+  ['Docusaurus.js', 80, 1],
+  ['Storybook', 80, 1],
+  ['Material UI', 80, 1],
+  ['Ant UI', 80, 1],
+  ['Svelte', 10, 1],
+  ['SvelteKit', 10, 1],
+  ['Vue.js', 10, 1],
+  ['Strapi CMS', 10],
+  ['Communication Skills', 90, 5],
+  ['Teamwork', 90, 5],
+  // ['Problem Solving', 90, 5],
+  // ['Time Management', 90, 5],
+  // ['Leadership', 90, 5],
+  // ['Creativity', 90, 5],
+  // ['Adaptability', 90, 5],
+  ['Organization', 90, 5],
+  // ['Attention to Detail', 90, 5],
+  // ['Flexibility', 90, 5],
+  // ['Self Motivation', 90, 5],
+  // ['Critical Thinking', 90, 5],
+  // ['Decision Making', 90, 5],
+  // ['Analytical Skills', 90, 5],
+  ['Data Structures', 70, 10],
+  ['Algorithms', 70, 10],
+  ['Figma', 60, 4],
+  ['Adobe XD', 6, 4],
 ];
+
+const dataList = skills.map(([State, confidance]) => ({
+  State,
+  confidance,
+})) as dataSchema[];
 
 function DOMsvg(e: number, t: number) {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -200,12 +147,11 @@ function DOMsvg(e: number, t: number) {
 
 async function define() {
   // const fetchedData = (await d3.csv('/data.csv')) as unknown as dataSchema[];
-  const data: dataSchema[] = dataList;
-  // .sort((a, b) => b.total - a.total);
+  const data: dataSchema[] = dataList.sort(
+    (a, b) => b.confidance - a.confidance
+  );
 
   const columns = Object.keys(data[0]);
-
-  console.log(data);
 
   const width = windowWidth;
   const height = windowHeight;
@@ -255,24 +201,29 @@ async function define() {
           g
             .append('text')
             .attr('text-anchor', (_, i) => {
-              return 'start';
-              return i < (data.length - 1) / 2 ? 'start' : 'end';
+              // return 'start';
+              // return i < (data.length - 1) / 2 ? 'start' : 'end';
+
+              if (i >= length / 2) {
+                return 'start';
+              }
+              return 'end';
             })
             .attr('transform', (d: any, i) => {
               const length = data.length - 1;
 
-              return 'rotate(0) translate(10,3)';
+              // return 'rotate(0) translate(10,3)';
 
-              if (i < length / 4) {
-                return 'rotate(360) translate(10,3)';
-              }
+              // if (i < length / 4) {
+              //   return 'rotate(0) translate(10,3)';
+              // }
               if (i < length / 2) {
-                return 'rotate(160) translate(10,3)';
+                return `rotate(0) translate(${outerRadius * 0.6},3)`;
               }
-              if (i < (3 * length) / 4) {
-                return 'rotate(240) translate(10,3)';
-              }
-              return 'rotate(160) translate(10,3)';
+              // if (i < (3 * length) / 4) {
+              return `rotate(-180) translate(-${outerRadius * 0.7},3)`;
+              // }
+              return `rotate(160) translate(10,3)`;
 
               const left =
                 ((x(d.State) as number) + x.bandwidth() / 2 + Math.PI / 2) %
@@ -322,13 +273,13 @@ async function define() {
           // .attr('y', (d: any) => -y(y.ticks(10).pop() as number))
           // .attr('dx', '1em')
           // .attr('dy', '1em')
-          .text('Confidance')
+          .text('Skills & Confidance')
       )
       .call(
         (g: any) =>
           g
             .selectAll('g')
-            .data(y.ticks(10).slice(1))
+            .data(y.ticks(5).slice(1))
             .join('g')
             .attr('fill', 'none')
             .call((g: any) =>
