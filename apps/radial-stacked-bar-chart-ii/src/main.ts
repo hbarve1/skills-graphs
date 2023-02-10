@@ -199,7 +199,7 @@ function DOMsvg(e: number, t: number) {
 }
 
 async function define() {
-  const fetchedData = (await d3.csv('/data.csv')) as unknown as dataSchema[];
+  // const fetchedData = (await d3.csv('/data.csv')) as unknown as dataSchema[];
   const data: dataSchema[] = dataList;
   // .sort((a, b) => b.total - a.total);
 
