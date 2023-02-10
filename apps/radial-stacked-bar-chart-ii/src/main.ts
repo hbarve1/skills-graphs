@@ -154,9 +154,9 @@ async function define() {
 
   const columns = Object.keys(data[0]);
 
-  const width = windowWidth;
-  const height = windowHeight;
-  const innerRadius = 120;
+  const width = Math.min(windowWidth, 500);
+  const height = Math.min(windowHeight, 500);
+  const innerRadius = Math.min(width, height) * 0.07;
   const outerRadius = Math.min(width, height) * 0.5;
   const x = d3
     .scaleBand()
@@ -206,8 +206,8 @@ async function define() {
             )
             .attr('transform', (_: unknown, i: number) =>
               i <= dataLength / 2
-                ? `rotate(0) translate(${outerRadius * 0.72},3)`
-                : `rotate(-180) translate(-${outerRadius * 0.72},3)`
+                ? `rotate(0) translate(${outerRadius * 0.84},4)`
+                : `rotate(-180) translate(-${outerRadius * 0.84},4)`
             )
             .text((d: any) => d.State)
         )

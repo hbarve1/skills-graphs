@@ -5,6 +5,9 @@ body {
   align-items: center;
   justify-items: center;
   align-content: center;
+
+  min-width: 500px;
+  min-height: 500px;
 }
 
 #container {
@@ -13,4 +16,7 @@ body {
   align-items: center;
   justify-items: center;
   align-content: center;
+
+  min-width: 500px;
+  min-height: 500px;
 }
