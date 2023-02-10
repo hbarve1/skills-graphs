@@ -15,7 +15,7 @@ describe('AppElement', () => {
     app.connectedCallback();
 
     expect(app.querySelector('h1').innerHTML).toContain(
-      'Welcome radial-stacked-bar-chart-22'
+      'Welcome radial-stacked-bar-chart-ii'
     );
   });
 });

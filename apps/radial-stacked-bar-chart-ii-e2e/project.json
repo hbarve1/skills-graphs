@@ -1,19 +1,19 @@
 {
-  "name": "radial-stacked-bar-chart-22-e2e",
+  "name": "radial-stacked-bar-chart-ii-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/radial-stacked-bar-chart-22-e2e/src",
+  "sourceRoot": "apps/radial-stacked-bar-chart-ii-e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/radial-stacked-bar-chart-22-e2e/cypress.config.ts",
-        "devServerTarget": "radial-stacked-bar-chart-22:serve:development",
+        "cypressConfig": "apps/radial-stacked-bar-chart-ii-e2e/cypress.config.ts",
+        "devServerTarget": "radial-stacked-bar-chart-ii:serve:development",
         "testingType": "e2e"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "radial-stacked-bar-chart-22:serve:production"
+          "devServerTarget": "radial-stacked-bar-chart-ii:serve:production"
         }
       }
     },
@@ -22,11 +22,11 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "apps/radial-stacked-bar-chart-22-e2e/**/*.{js,ts}"
+          "apps/radial-stacked-bar-chart-ii-e2e/**/*.{js,ts}"
         ]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["radial-stacked-bar-chart-22"]
+  "implicitDependencies": ["radial-stacked-bar-chart-ii"]
 }

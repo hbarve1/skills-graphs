@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('radial-stacked-bar-chart-22', () => {
+describe('radial-stacked-bar-chart-ii', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
@@ -8,6 +8,6 @@ describe('radial-stacked-bar-chart-22', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome radial-stacked-bar-chart-22');
+    getGreeting().contains('Welcome radial-stacked-bar-chart-ii');
   });
 });

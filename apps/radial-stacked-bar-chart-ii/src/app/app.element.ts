@@ -4,7 +4,7 @@ export class AppElement extends HTMLElement {
   public static observedAttributes = [];
 
   connectedCallback() {
-    const title = 'radial-stacked-bar-chart-22';
+    const title = 'radial-stacked-bar-chart-ii';
     this.innerHTML = `
     <div class="wrapper">
       <div class="container">

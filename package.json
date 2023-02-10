@@ -2,10 +2,14 @@
   "name": "skills-graphs",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "nx": "nx",
+    "dev": "nx serve"
+  },
   "private": true,
   "dependencies": {
     "core-js": "^3.6.5",
+    "d3": "^7.8.2",
     "regenerator-runtime": "0.13.7",
     "tslib": "^2.3.0"
   },
@@ -16,6 +20,7 @@
     "@nrwl/vite": "15.6.3",
     "@nrwl/web": "15.6.3",
     "@nrwl/workspace": "15.6.3",
+    "@types/d3": "^7.4.0",
     "@types/node": "18.7.1",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",

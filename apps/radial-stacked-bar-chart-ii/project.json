@@ -1,8 +1,8 @@
 {
-  "name": "radial-stacked-bar-chart-22",
+  "name": "radial-stacked-bar-chart-ii",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/radial-stacked-bar-chart-22/src",
+  "sourceRoot": "apps/radial-stacked-bar-chart-ii/src",
   "tags": [],
   "targets": {
     "build": {
@@ -10,7 +10,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/radial-stacked-bar-chart-22"
+        "outputPath": "dist/apps/radial-stacked-bar-chart-ii"
       },
       "configurations": {
         "development": {
@@ -25,15 +25,15 @@
       "executor": "@nrwl/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "radial-stacked-bar-chart-22:build"
+        "buildTarget": "radial-stacked-bar-chart-ii:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "radial-stacked-bar-chart-22:build:development",
+          "buildTarget": "radial-stacked-bar-chart-ii:build:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "radial-stacked-bar-chart-22:build:production",
+          "buildTarget": "radial-stacked-bar-chart-ii:build:production",
           "hmr": false
         }
       }
@@ -42,30 +42,30 @@
       "executor": "@nrwl/vite:preview-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "radial-stacked-bar-chart-22:build"
+        "buildTarget": "radial-stacked-bar-chart-ii:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "radial-stacked-bar-chart-22:build:development"
+          "buildTarget": "radial-stacked-bar-chart-ii:build:development"
         },
         "production": {
-          "buildTarget": "radial-stacked-bar-chart-22:build:production"
+          "buildTarget": "radial-stacked-bar-chart-ii:build:production"
         }
       }
     },
     "test": {
       "executor": "@nrwl/vite:test",
-      "outputs": ["coverage/apps/radial-stacked-bar-chart-22"],
+      "outputs": ["coverage/apps/radial-stacked-bar-chart-ii"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/apps/radial-stacked-bar-chart-22"
+        "reportsDirectory": "../../coverage/apps/radial-stacked-bar-chart-ii"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/radial-stacked-bar-chart-22/**/*.ts"]
+        "lintFilePatterns": ["apps/radial-stacked-bar-chart-ii/**/*.ts"]
       }
     }
   }
