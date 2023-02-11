@@ -154,8 +154,8 @@ async function define() {
 
   const columns = Object.keys(data[0]);
 
-  const width = Math.min(windowWidth, 500);
-  const height = Math.min(windowHeight, 500);
+  const width = Math.max(windowWidth, 500);
+  const height = Math.max(windowHeight, 500);
   const innerRadius = Math.min(width, height) * 0.07;
   const outerRadius = Math.min(width, height) * 0.5;
   const x = d3
@@ -282,7 +282,7 @@ async function define() {
     .attr('viewBox', `${-width / 2} ${-height / 2} ${width} ${height}`)
     .style('width', windowWidth)
     .style('height', windowHeight)
-    .style('font', '14px sans-serif');
+    .style('font', '1.1rem sans-serif');
 
   svg
     .append('g')
