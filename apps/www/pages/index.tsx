@@ -1,40 +1,40 @@
 import { getDataFromGoogleSheet } from '../lib/googleSheet';
 import styles from './index.module.css';
-import React, { useEffect } from 'react';
-import {
-  ScatterChart,
-  Scatter,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Legend,
-} from 'recharts';
-import { useWindowSize } from '../lib/hook';
+import React from 'react';
+// import {
+//   ScatterChart,
+//   Scatter,
+//   XAxis,
+//   YAxis,
+//   CartesianGrid,
+//   Tooltip,
+//   ResponsiveContainer,
+//   Legend,
+// } from 'recharts';
+// import { useWindowSize } from '../lib/hook';
 
-function Graph({ data }) {
-  const { width, height } = useWindowSize();
+// function Graph({ data }) {
+//   const { width, height } = useWindowSize();
 
-  return (
-    <ResponsiveContainer width={width} height={height}>
-      <ScatterChart
-        margin={{
-          top: 20,
-          right: 20,
-          bottom: 20,
-          left: 20,
-        }}
-      >
-        <CartesianGrid />
-        <XAxis type="number" dataKey="confidance" name="Confidance" unit="%" />
-        <YAxis type="number" dataKey="years" name="Year(s)" unit="" />
-        <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-        <Scatter name="A school" data={data} fill="#8884d8" />
-      </ScatterChart>
-    </ResponsiveContainer>
-  );
-}
+//   return (
+//     <ResponsiveContainer width={width} height={height}>
+//       <ScatterChart
+//         margin={{
+//           top: 20,
+//           right: 20,
+//           bottom: 20,
+//           left: 20,
+//         }}
+//       >
+//         <CartesianGrid />
+//         <XAxis type="number" dataKey="confidance" name="Confidance" unit="%" />
+//         <YAxis type="number" dataKey="years" name="Year(s)" unit="" />
+//         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+//         <Scatter name="A school" data={data} fill="#8884d8" />
+//       </ScatterChart>
+//     </ResponsiveContainer>
+//   );
+// }
 
 function BarChart({ skills, categories }) {
   return (

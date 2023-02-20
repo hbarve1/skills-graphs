@@ -12,6 +12,7 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  exportPathMap: (dpath) => dpath,
 };
 
 module.exports = withNx(nextConfig);
